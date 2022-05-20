@@ -1,11 +1,12 @@
 # Blackjack-Game
 
-game project
+Game Project: Blackjack
 
 Premise:This is a card game about beat Dealer's score while at the same time not Bust (over 21 points)
 
 User Story
 As a user I want to
+
 • Be able to start the game by clicking start button.
 
 • Be able to start a new game by clicking new game button.
