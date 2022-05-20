@@ -19,8 +19,10 @@ let stand = document.querySelector("#stand");
 let playerCardContainer = document.querySelector("#playerCard");
 //  select dealerCard figure container
 let dealerCardContainer = document.querySelector("#dealerCard");
-// create a start function assign 2 card to player and dealer
 
+// create a start function assign 2 card to player and dealer
+// this function will get triggered once start button got clicked
+// assign 2 cards for both the player and the dealer
 function startGame() {
   let playerCard1 = document.createElement("img");
   let playerCard2 = document.createElement("img");
@@ -49,7 +51,13 @@ function startGame() {
   dealerCard2.alt = `${random4}`;
 }
 
-// when click start button, triger startGame
+// when click start button, triger startGame both dealer and player will have 2 cards
 startBtn.addEventListener("click", () => {
   startGame();
+  startBtn.disabled = true;
+});
+
+// when click new game button will refresh the page
+newGameBtn.addEventListener("click", () => {
+  window.location.reload();
 });
