@@ -1,0 +1,35 @@
+body{
+    background-image: url('/Users/jinglin/Desktop/GA/homework/project_1/css/background.jpeg');
+    background-size: cover;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    font-family: 'Dancing Script', cursive;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+h1{
+    font-size: 50px;
+}
+.btn{
+    background-color: aliceblue;
+    color: gray;
+    margin: 15px;
+}
+.images{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+
+.bottom{
+margin-top: 100px;
+}
+img{
+    width: 150px;
+    height: 150px;
+}
