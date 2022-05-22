@@ -3,8 +3,12 @@ let playerCard = [];
 // dealerCard array to store dealer's points
 let dealerCard = [];
 // player
-currentPlayer = "you";
-
+currentPlayer = "Player";
+// total score is 0 at beginning
+let playerScore = 0;
+let dealerScore = 0;
+// count ace
+let countAce = 0;
 // generate random number from 1 -13
 let randomCard = () => {
   return Math.ceil(Math.random() * 13);
@@ -23,6 +27,8 @@ stand.disabled = true;
 let playerCardContainer = document.querySelector("#playerCard");
 //  select dealerCard figure container
 let dealerCardContainer = document.querySelector("#dealerCard");
+// select h3 with id result
+let result = document.querySelector("#result");
 
 // create a start function assign 2 card to player and dealer
 // this function will get triggered once start button got clicked
@@ -47,8 +53,8 @@ function startGame() {
   playerCardContainer.appendChild(playerCard1);
   playerCardContainer.appendChild(playerCard2);
 
-  playerScore(random1);
-  playerScore(random2);
+  playerScorePush(random1);
+  playerScorePush(random2);
   // console.log(playerCard);
   // get dealer's first 2 cards and append them to dealerCard container
   // push score to dealerArr
@@ -60,14 +66,17 @@ function startGame() {
   dealerCard2.src = `./css/cards/${random4}.png`;
   dealerCardContainer.appendChild(dealerCard2);
   dealerCard2.alt = `${random4}`;
-  dealerScore(random3);
-  dealerScore(random4);
-  // console.log(dealerCard);
+  dealerScorePush(random3);
+  dealerScorePush(random4);
+
+  // check player's  score
+  [playerScore, countAce] = checkScore(playerCard);
+  console.log(playerScore);
 }
 
 // game logic for cards from 2-10 it has its face value, for cards jack, queen, king they value 10
 // for card Ace it values 11 at begining
-function playerScore(random) {
+function playerScorePush(random) {
   if (random === 1) {
     playerCard.push(11);
   } else if (random > 10) {
@@ -76,7 +85,7 @@ function playerScore(random) {
     playerCard.push(random);
   }
 }
-function dealerScore(random) {
+function dealerScorePush(random) {
   if (random === 1) {
     dealerCard.push(11);
   } else if (random > 10) {
@@ -89,7 +98,7 @@ function dealerScore(random) {
 // when click hit button , player will be assigned another card
 
 function handleHit() {
-  if (currentPlayer === "you") {
+  if (currentPlayer === "Player") {
     let newCard = randomCard();
     console.log(newCard);
     let playerCard3 = document.createElement("img");
@@ -97,35 +106,52 @@ function handleHit() {
     playerCard3.alt = `${newCard}`;
     playerCardContainer.appendChild(playerCard3);
 
-    playerScore(newCard);
+    playerScorePush(newCard);
     console.log(playerCard);
-    checkScore(playerCard);
+    checkScore(playerCard, playerScore);
   }
+}
+
+// while click stand button, dealer's turn
+// compare player and dealer'score at the end
+function handleStand() {
+  currentPlayer = "Dealer";
 }
 
 // check total score
 function checkScore(scoreArr) {
-  let totalScore = 0;
-  let countAce = 0;
+  let currentScore = 0;
+  let ace = 0;
   scoreArr.forEach((score) => {
-    totalScore += score;
+    currentScore += score;
     if (score === 11) {
-      countAce++;
+      ace++;
     }
   });
-  if (totalScore === 21) {
-    alert("you win !");
-  } else if (totalScore > 21 && scoreArr.includes(11)) {
-    totalScore - 10 > 21 ? alert("Bust") : null;
-  } else if (totalScore > 21) {
-    // you lose
-    alert("Bust");
+  while (currentScore > 21 && ace > 0) {
+    currentScore -= 10;
+    ace--;
   }
+  return [currentScore, ace];
+}
+
+// check game status base on score
+function checkStatus(totalScore) {
+  if (totalScore === 21) {
+    result.innerText = `${currentPlayer} wins!!`;
+  }
+  if (totalScore > 21) {
+    result.innerText = `${currentPlayer} Bust!!!`;
+  } else return totalScore;
 }
 
 // eventHandler for button hit
 hit.addEventListener("click", () => {
   handleHit();
+});
+// eventHandler for stand button
+stand.addEventListener("click", () => {
+  handleStand();
 });
 // when click start button, triger startGame both dealer and player will have 2 cards
 startBtn.addEventListener("click", () => {
