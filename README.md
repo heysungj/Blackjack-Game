@@ -19,7 +19,7 @@ As a user I want to
 
 • If I have a score greater than 21 points I lose immediately.
 
-• If I hit 21 points at the begining (with an ace and any card from 10 to king) I win immediately (Blackjack).
+• If I hit 21 points at the begining (with an ace and any card from 10 to king) dealer's turn.
 
 • If I hava score between 1-21 and greater than dealer's score I win, otherwise I lose.
 

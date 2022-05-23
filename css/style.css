@@ -1,5 +1,5 @@
 body{
-    background: url('/Users/jinglin/Desktop/GA/homework/project_1/css/background.jpeg') no-repeat center center fixed; 
+    background: url('/Users/jinglin/Desktop/GA/homework/project1/Blackjack-Game/css/newBackground.jpeg') no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -40,11 +40,21 @@ img{
     display: inline-block;
     width: 150px;
     height: 150px;
+    border: none;
+    margin: 2px;
 }
 
 #result{
     margin-top: 50px;
-    color: rgb(184, 171, 171);
+    font-weight: 900;
+    color: brown;
+    
+}
+
+#aiResult {
+    margin-top: 5px;
+    color: brown;
+    font-weight: 900;
 }
 .bottom {
     margin-top: 110px;

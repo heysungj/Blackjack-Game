@@ -18,7 +18,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./css/style.css" />
-    <title>Document</title>
+    <title>Blackjack Game</title>
   </head>
   <body>
     <main>
@@ -38,6 +38,11 @@
             <h2>Player's cards</h2>
           </figure>
         </div>
+        <div class="images d-flex justify-content-start">
+          <figure id="aiCard">
+            <h2>AI's cards</h2>
+          </figure>
+        </div>
         <div class="images d-flex justify-content-end">
           <figure id="dealerCard">
             <h2>Dealer's cards</h2>
@@ -46,6 +51,7 @@
       </div>
 
       <h2 id="result"></h2>
+      <h2 id="aiResult"></h2>
       <div class="d-flex flex-row bottom">
         <button type="button" class="btn btn-secondary btn-lg" id="hit">
           Hit
