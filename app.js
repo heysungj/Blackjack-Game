@@ -170,10 +170,14 @@ function checkScore(scoreArr) {
 function checkStatus(totalScore) {
   if (totalScore === 21) {
     result.innerText = `${currentPlayer} wins!!`;
+    hit.disabled = true;
+    stand.disabled = true;
     gameOver = true;
   }
   if (totalScore > 21) {
     result.innerText = `${currentPlayer} Bust!!!`;
+    hit.disabled = true;
+    stand.disabled = true;
     gameOver = true;
   } else return totalScore;
 }
