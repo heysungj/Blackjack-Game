@@ -33,7 +33,7 @@ let playerCardContainer = document.querySelector("#playerCard");
 let dealerCardContainer = document.querySelector("#dealerCard");
 // select h3 with id result
 let result = document.querySelector("#result");
-
+debugger;
 // create 4 image elements
 let playerCard1 = document.createElement("img");
 let playerCard2 = document.createElement("img");
@@ -78,8 +78,12 @@ function startGame() {
 
   // check player's  score
   [playerScore, countAce] = checkScore(playerCard);
-  console.log(playerScore);
+  [dealerScore, countAce] = checkScore(dealerCard);
+  // console.log(playerScore);
   checkStatus(playerScore);
+  if (playerScore === 21) {
+    setTimeout(handleStand, 1000);
+  }
 }
 
 // game logic for cards from 2-10 it has its face value, for cards jack, queen, king they value 10
@@ -127,7 +131,6 @@ function handleHit() {
 function handleStand() {
   hit.disabled = true;
   currentPlayer = "Dealer";
-  [dealerScore, countAce] = checkScore(dealerCard);
 
   checkStatus(dealerScore);
 
@@ -169,10 +172,10 @@ function checkScore(scoreArr) {
 // check game status base on score
 function checkStatus(totalScore) {
   if (totalScore === 21) {
-    result.innerText = `${currentPlayer} wins!!`;
+    result.innerText = `${currentPlayer} has Blackjack!!`;
     hit.disabled = true;
     stand.disabled = true;
-    gameOver = true;
+    // gameOver = true;
   }
   if (totalScore > 21) {
     result.innerText = `${currentPlayer} Bust!!!`;
@@ -185,7 +188,7 @@ function checkStatus(totalScore) {
 // compare player's and dealer's score
 function compare(playerScore, dealerScore) {
   if (playerScore === dealerScore) {
-    result.innerText = "Tie Game !!";
+    result.innerText = `Player score: ${playerScore} , Dealer score: ${dealerScore}, Tie Game!`;
   } else if (playerScore > dealerScore) {
     result.innerText = `Player score: ${playerScore} , Dealer score: ${dealerScore}, Player Wins!`;
   } else {
