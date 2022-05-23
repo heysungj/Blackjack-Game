@@ -69,24 +69,25 @@ function ai() {
   aiScorePush(random1);
   aiScorePush(random2);
   [aiScore, countAce] = checkScore(aiCard);
+  setTimeout(() => {
+    while (aiScore < 17) {
+      let random = randomCard();
+      let aiCardExtra = document.createElement("img");
+      aiCardExtra.src = `./css/cards/${random}.png`;
+      aiCardExtra.setAttribute("class", "show");
+      aiCardExtra.alt = `${random}`;
+      aiCardContainer.appendChild(aiCardExtra);
+      aiScorePush(random);
+      [aiScore, countAce] = checkScore(aiCard);
+    }
+    if (aiScore === 21) {
+      aiResult.innerText = "AI has Blackjack!";
+    } else if (aiScore > 21) {
+      aiResult.innerText = "AI Bust! Dealer Wins";
+    }
 
-  while (aiScore < 17) {
-    let random = randomCard();
-    let aiCardExtra = document.createElement("img");
-    aiCardExtra.src = `./css/cards/${random}.png`;
-    aiCardExtra.setAttribute("class", "show");
-    aiCardExtra.alt = `${random}`;
-    aiCardContainer.appendChild(aiCardExtra);
-    aiScorePush(random);
-    [aiScore, countAce] = checkScore(aiCard);
-  }
-  if (aiScore === 21) {
-    aiResult.innerText = "AI has Blackjack!";
-  } else if (aiScore > 21) {
-    aiResult.innerText = "AI Bust! Dealer Wins";
-  }
-
-  console.log("ai score is " + aiScore);
+    console.log("ai score is " + aiScore);
+  }, 1000);
 }
 
 // create a start function assign 2 card to player and dealer
@@ -201,25 +202,26 @@ function handleStand() {
   currentPlayer = "Dealer";
 
   checkStatus(dealerScore);
+  setTimeout(() => {
+    while (dealerScore < 17 || dealerScore < playerScore) {
+      let random = randomCard();
+      let dealerCardExtra = document.createElement("img");
+      dealerCardExtra.src = `./css/cards/${random}.png`;
+      dealerCardExtra.setAttribute("class", "show");
+      dealerCardExtra.alt = `${random}`;
+      dealerCardContainer.appendChild(dealerCardExtra);
+      dealerScorePush(random);
+      [dealerScore, countAce] = checkScore(dealerCard);
+    }
 
-  while (dealerScore < 17 || dealerScore < playerScore) {
-    let random = randomCard();
-    let dealerCardExtra = document.createElement("img");
-    dealerCardExtra.src = `./css/cards/${random}.png`;
-    dealerCardExtra.setAttribute("class", "show");
-    dealerCardExtra.alt = `${random}`;
-    dealerCardContainer.appendChild(dealerCardExtra);
-    dealerScorePush(random);
-    [dealerScore, countAce] = checkScore(dealerCard);
-  }
+    dealerCard1.src = `./css/cards/${dealerImgSrc}.png`;
+    checkStatus(dealerScore);
+    compare(playerScore, dealerScore);
 
-  dealerCard1.src = `./css/cards/${dealerImgSrc}.png`;
-  checkStatus(dealerScore);
-  compare(playerScore, dealerScore);
-
-  if (aiScore <= 21) {
-    compareAi(aiScore, dealerScore);
-  }
+    if (aiScore <= 21) {
+      compareAi(aiScore, dealerScore);
+    }
+  }, 500);
 }
 
 // check total score
