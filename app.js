@@ -61,6 +61,8 @@ function ai() {
   // console.log(playerCard1.alt);
   aiCard1.src = `./css/cards/${random1}.png`;
   aiCard2.src = `./css/cards/${random2}.png`;
+  aiCard1.setAttribute("class", "show");
+  aiCard2.setAttribute("class", "show");
   aiCardContainer.appendChild(aiCard1);
   aiCardContainer.appendChild(aiCard2);
 
@@ -72,6 +74,7 @@ function ai() {
     let random = randomCard();
     let aiCardExtra = document.createElement("img");
     aiCardExtra.src = `./css/cards/${random}.png`;
+    aiCardExtra.setAttribute("class", "show");
     aiCardExtra.alt = `${random}`;
     aiCardContainer.appendChild(aiCardExtra);
     aiScorePush(random);
@@ -99,6 +102,8 @@ function startGame() {
   let random2 = randomCard();
   playerCard1.src = `./css/cards/${random1}.png`;
   playerCard2.src = `./css/cards/${random2}.png`;
+  playerCard1.setAttribute("class", "show");
+  playerCard2.setAttribute("class", "show");
   playerCard1.alt = `${random1}`;
   playerCard2.alt = `${random1}`;
   // console.log(playerCard1.alt);
@@ -114,9 +119,11 @@ function startGame() {
   let random4 = randomCard();
   dealerImgSrc = random3;
   dealerCard1.src = `./css/cards/back.png`;
+  dealerCard1.setAttribute("class", "show");
   dealerCardContainer.appendChild(dealerCard1);
   dealerCard1.alt = `${random3}`;
   dealerCard2.src = `./css/cards/${random4}.png`;
+  dealerCard2.setAttribute("class", "show");
   dealerCardContainer.appendChild(dealerCard2);
   dealerCard2.alt = `${random4}`;
   dealerScorePush(random3);
@@ -172,6 +179,7 @@ function handleHit() {
     // console.log(newCard);
     let playerCard3 = document.createElement("img");
     playerCard3.src = `./css/cards/${newCard}.png`;
+    playerCard3.setAttribute("class", "show");
     playerCard3.alt = `${newCard}`;
     playerCardContainer.appendChild(playerCard3);
 
@@ -198,6 +206,7 @@ function handleStand() {
     let random = randomCard();
     let dealerCardExtra = document.createElement("img");
     dealerCardExtra.src = `./css/cards/${random}.png`;
+    dealerCardExtra.setAttribute("class", "show");
     dealerCardExtra.alt = `${random}`;
     dealerCardContainer.appendChild(dealerCardExtra);
     dealerScorePush(random);

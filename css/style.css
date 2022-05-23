@@ -7,7 +7,8 @@ body{
 }
 
 main{
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,22 +39,29 @@ margin-top: 100px;
 
 img{
     display: inline-block;
-    width: 150px;
-    height: 150px;
+    width: 10px;
+    height: 10px;
     border: none;
     margin: 2px;
+    transition:  all 1s ease;
 }
+
+.show {
+    width: 150px;
+    height: 150px;
+}
+
 
 #result{
     margin-top: 50px;
     font-weight: 900;
-    color: brown;
+    color: rgb(83, 72, 72);
     
 }
 
 #aiResult {
     margin-top: 5px;
-    color: brown;
+    color: rgb(83, 72, 72);
     font-weight: 900;
 }
 .bottom {
