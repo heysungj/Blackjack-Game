@@ -4,11 +4,15 @@ let playerCard = [];
 let dealerCard = [];
 // player
 currentPlayer = "Player";
+// set game over
+let gameOver = false;
 // total score is 0 at beginning
 let playerScore = 0;
 let dealerScore = 0;
 // count ace
 let countAce = 0;
+// dealer image number
+let dealerImgSrc = null;
 // generate random number from 1 -13
 let randomCard = () => {
   return Math.ceil(Math.random() * 13);
@@ -30,17 +34,18 @@ let dealerCardContainer = document.querySelector("#dealerCard");
 // select h3 with id result
 let result = document.querySelector("#result");
 
+// create 4 image elements
+let playerCard1 = document.createElement("img");
+let playerCard2 = document.createElement("img");
+let dealerCard1 = document.createElement("img");
+let dealerCard2 = document.createElement("img");
 // create a start function assign 2 card to player and dealer
 // this function will get triggered once start button got clicked
 // assign 2 cards for both the player and the dealer
+
 function startGame() {
   hit.disabled = false;
   stand.disabled = false;
-  let playerCard1 = document.createElement("img");
-  let playerCard2 = document.createElement("img");
-  let dealerCard1 = document.createElement("img");
-  let dealerCard2 = document.createElement("img");
-
   // get player's first 2 cards and append them to playerCard container
   // push score inside playerCard
   let random1 = randomCard();
@@ -60,6 +65,7 @@ function startGame() {
   // push score to dealerArr
   let random3 = randomCard();
   let random4 = randomCard();
+  dealerImgSrc = random3;
   dealerCard1.src = `./css/cards/back.png`;
   dealerCardContainer.appendChild(dealerCard1);
   dealerCard1.alt = `${random3}`;
@@ -68,10 +74,12 @@ function startGame() {
   dealerCard2.alt = `${random4}`;
   dealerScorePush(random3);
   dealerScorePush(random4);
+  console.log(dealerCard);
 
   // check player's  score
   [playerScore, countAce] = checkScore(playerCard);
   console.log(playerScore);
+  checkStatus(playerScore);
 }
 
 // game logic for cards from 2-10 it has its face value, for cards jack, queen, king they value 10
@@ -100,22 +108,45 @@ function dealerScorePush(random) {
 function handleHit() {
   if (currentPlayer === "Player") {
     let newCard = randomCard();
-    console.log(newCard);
+    // console.log(newCard);
     let playerCard3 = document.createElement("img");
     playerCard3.src = `./css/cards/${newCard}.png`;
     playerCard3.alt = `${newCard}`;
     playerCardContainer.appendChild(playerCard3);
 
     playerScorePush(newCard);
-    console.log(playerCard);
-    checkScore(playerCard, playerScore);
+    // console.log(playerCard);
+    [playerScore, countAce] = checkScore(playerCard);
+    checkStatus(playerScore);
   }
 }
 
 // while click stand button, dealer's turn
+// check dealer's score
 // compare player and dealer'score at the end
 function handleStand() {
+  hit.disabled = true;
   currentPlayer = "Dealer";
+  [dealerScore, countAce] = checkScore(dealerCard);
+
+  checkStatus(dealerScore);
+
+  while (dealerScore < 17) {
+    let random = randomCard();
+    let dealerCardExtra = document.createElement("img");
+    dealerCardExtra.src = `./css/cards/${random}.png`;
+    dealerCardExtra.alt = `${random}`;
+    dealerCardContainer.appendChild(dealerCardExtra);
+    dealerScorePush(random);
+    console.log(dealerCard);
+    [dealerScore, countAce] = checkScore(dealerCard);
+  }
+
+  dealerCard1.src = `./css/cards/${dealerImgSrc}.png`;
+  checkStatus(dealerScore);
+  if (gameOver === false) {
+    compare(playerScore, dealerScore);
+  }
 }
 
 // check total score
@@ -139,10 +170,23 @@ function checkScore(scoreArr) {
 function checkStatus(totalScore) {
   if (totalScore === 21) {
     result.innerText = `${currentPlayer} wins!!`;
+    gameOver = true;
   }
   if (totalScore > 21) {
     result.innerText = `${currentPlayer} Bust!!!`;
+    gameOver = true;
   } else return totalScore;
+}
+
+// compare player's and dealer's score
+function compare(playerScore, dealerScore) {
+  if (playerScore === dealerScore) {
+    result.innerText = "Tie Game !!";
+  } else if (playerScore > dealerScore) {
+    result.innerText = `Player score: ${playerScore} , Dealer score: ${dealerScore}, Player Wins!`;
+  } else {
+    result.innerText = `Player score: ${playerScore} , Dealer score: ${dealerScore}, Dealer Wins!`;
+  }
 }
 
 // eventHandler for button hit
