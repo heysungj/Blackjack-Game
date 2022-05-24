@@ -173,7 +173,7 @@ function aiScorePush(random) {
 }
 
 // when click hit button , player will be assigned another card
-
+// check player's score
 function handleHit() {
   if (currentPlayer === "Player") {
     let newCard = randomCard();
