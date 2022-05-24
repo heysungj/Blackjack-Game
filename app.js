@@ -4,17 +4,15 @@ let playerCard = [];
 let dealerCard = [];
 //  ai array to store ai player points
 let aiCard = [];
-// player
+// current player
 currentPlayer = "Player";
-// set game over
-// let gameOver = false;
 // total score is 0 at beginning
 let playerScore = 0;
 let dealerScore = 0;
 let aiScore = 0;
 // count ace
 let countAce = 0;
-// dealer image number
+// dealer's covered card image number
 let dealerImgSrc = null;
 // generate random number from 1 -13
 let randomCard = () => {
@@ -66,6 +64,7 @@ function ai() {
   aiCardContainer.appendChild(aiCard1);
   aiCardContainer.appendChild(aiCard2);
 
+  // push score into ai score array
   aiScorePush(random1);
   aiScorePush(random2);
   [aiScore, countAce] = checkScore(aiCard);
@@ -144,6 +143,7 @@ function startGame() {
 
 // game logic for cards from 2-10 it has its face value, for cards jack, queen, king they value 10
 // for card Ace it values 11 at begining
+// functions to push score into score arrays for player, AI and dealer
 function playerScorePush(random) {
   if (random === 1) {
     playerCard.push(11);
