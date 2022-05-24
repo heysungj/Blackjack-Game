@@ -1,5 +1,5 @@
 body{
-    background: url('/Users/jinglin/Desktop/GA/homework/project1/Blackjack-Game/css/cards/newBackground.png') no-repeat center center fixed; 
+    background: url('./css/cards/newBackground.png') no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
