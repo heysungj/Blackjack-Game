@@ -32,6 +32,6 @@ Technologies Used
 • JavaScript (logic and DOM manipulation)
 
 Wireframes:
-![alt text](http:///Users/jinglin/Desktop/GA/homework/project1/Blackjack-Game/css/instruction.jpeg)
+![alt text](/Users/jinglin/Desktop/GA/homework/project1/Blackjack-Game/css/newBackground.jpeg)
 
 what game will look like
