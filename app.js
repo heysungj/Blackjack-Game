@@ -38,6 +38,11 @@ let aiCardContainer = document.querySelector("#aiCard");
 let result = document.querySelector("#result");
 // select h3 with id aiResult
 let aiResult = document.querySelector("#aiResult");
+// select h2 with id playerScore, aiScore and dealerScore
+let playerH2 = document.querySelector("#playerScore");
+let aiH2 = document.querySelector("#aiScore");
+let dealerrH2 = document.querySelector("#dealerScore");
+
 // create 2 image elements for player
 let playerCard1 = document.createElement("img");
 let playerCard2 = document.createElement("img");
