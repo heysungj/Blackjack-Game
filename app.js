@@ -41,7 +41,7 @@ let aiResult = document.querySelector("#aiResult");
 // select h2 with id playerScore, aiScore and dealerScore
 let playerH2 = document.querySelector("#playerScore");
 let aiH2 = document.querySelector("#aiScore");
-let dealerrH2 = document.querySelector("#dealerScore");
+let dealerH2 = document.querySelector("#dealerScore");
 
 // create 2 image elements for player
 let playerCard1 = document.createElement("img");
@@ -73,6 +73,10 @@ function ai() {
   aiScorePush(random1);
   aiScorePush(random2);
   [aiScore, countAce] = checkScore(aiCard);
+
+  // show ai scores
+  aiH2.innerText = `Score: ${aiScore}`;
+
   setTimeout(() => {
     while (aiScore < 17) {
       let random = randomCard();
@@ -83,6 +87,7 @@ function ai() {
       aiCardContainer.appendChild(aiCardExtra);
       aiScorePush(random);
       [aiScore, countAce] = checkScore(aiCard);
+      aiH2.innerText = `Score: ${aiScore}`;
     }
     if (aiScore === 21) {
       aiResult.innerText = "AI has Blackjack!";
@@ -139,6 +144,10 @@ function startGame() {
   // check score
   [playerScore, countAce] = checkScore(playerCard);
   [dealerScore, countAce] = checkScore(dealerCard);
+
+  // show scores
+  playerH2.innerText = `Score: ${playerScore}`;
+  dealerH2.innerText = `Score: ${dealerScore}`;
   // console.log(playerScore);
   checkStatus(playerScore);
   if (playerScore >= 21) {
@@ -192,6 +201,7 @@ function handleHit() {
     playerScorePush(newCard);
     console.log("playercard is " + playerCard);
     [playerScore, countAce] = checkScore(playerCard);
+    playerH2.innerText = `Score: ${playerScore}`;
     checkStatus(playerScore);
     if (playerScore >= 21) {
       setTimeout(handleStand, 1000);
@@ -217,6 +227,7 @@ function handleStand() {
       dealerCardContainer.appendChild(dealerCardExtra);
       dealerScorePush(random);
       [dealerScore, countAce] = checkScore(dealerCard);
+      dealerH2.innerText = `Score: ${dealerScore}`;
     }
 
     dealerCard1.src = `./css/cards/${dealerImgSrc}.png`;
