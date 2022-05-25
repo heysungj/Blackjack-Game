@@ -268,7 +268,7 @@ function compare(playerScore, dealerScore) {
   } else if (playerScore < dealerScore && dealerScore <= 21) {
     result.innerText = `Player score: ${playerScore} , Dealer score: ${dealerScore}, Dealer Wins!`;
   } else {
-    result.innerText = `Player score: ${playerScore} , Dealer score: ${dealerScore}, Dealer Bust!`;
+    result.innerText = `Player score: ${playerScore} , Dealer score: ${dealerScore}, Dealer Bust! Player wins!`;
   }
 }
 
