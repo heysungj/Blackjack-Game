@@ -56,18 +56,25 @@ img{
 
 #result{
     font-family: 'Open Sans', sans-serif;
+    font-size: 50px;
     margin-top: 50px;
     font-weight: 900;
-    color: rgb(166, 166, 62);
+    color: grey;
+    -webkit-text-stroke: 1px white;
     
 }
 
 #aiResult {
     margin-top: 5px;
     font-family: 'Open Sans', sans-serif;
-    color: rgb(166, 166, 62);
+    color: grey;
+    font-size: 50px;
     font-weight: 900;
+    -webkit-text-stroke: 1px white;
 }
 .bottom {
     margin-top: 110px;
+}
+h2{
+    -webkit-text-stroke: 1px white;
 }

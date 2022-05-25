@@ -276,28 +276,28 @@ function checkStatus(totalScore) {
 // compare player's and dealer's score
 function compare(playerScore, dealerScore) {
   if (playerScore > 21) {
-    result.innerText = `Player score: ${playerScore} , Player Bust! Dealer Wins!`;
+    result.innerText = `You: You Bust! Dealer Wins!`;
   } else if (playerScore === dealerScore) {
-    result.innerText = `Player score: ${playerScore} , Dealer score: ${dealerScore}, Tie Game!`;
+    result.innerText = `You: Tie Game!`;
   } else if (playerScore > dealerScore) {
-    result.innerText = `Player score: ${playerScore} , Dealer score: ${dealerScore}, Player Wins!`;
+    result.innerText = `You: You Wins!`;
   } else if (playerScore < dealerScore && dealerScore <= 21) {
-    result.innerText = `Player score: ${playerScore} , Dealer score: ${dealerScore}, Dealer Wins!`;
+    result.innerText = ` You: Dealer Wins!`;
   } else {
-    result.innerText = `Player score: ${playerScore} , Dealer score: ${dealerScore}, Dealer Bust! Player wins!`;
+    result.innerText = `You: Dealer Bust! You win!`;
   }
 }
 
 // compare ai and dealer's score
 function compareAi(aiScore, dealerScore) {
   if (aiScore === dealerScore) {
-    aiResult.innerText = `AI Player score: ${aiScore} , Dealer score: ${dealerScore}, Tie Game!`;
+    aiResult.innerText = `AI Game: Tie Game!`;
   } else if (aiScore > dealerScore) {
-    aiResult.innerText = `AI Player score: ${aiScore} , Dealer score: ${dealerScore}, AI Player Wins!`;
+    aiResult.innerText = `AI Game: AI  Wins!`;
   } else if (aiScore < dealerScore && dealerScore <= 21) {
-    aiResult.innerText = `AI Player score: ${aiScore} , Dealer score: ${dealerScore}, Dealer Wins!`;
+    aiResult.innerText = `AI Game: Dealer Wins!`;
   } else {
-    aiResult.innerText = `AI Player score: ${aiScore}, Dealer score: ${dealerScore}, Dealer Bust! AI Wins !!`;
+    aiResult.innerText = `AI Game: Dealer Bust! AI Wins !!`;
   }
 }
 // eventHandler for button hit
