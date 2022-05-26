@@ -7,7 +7,7 @@ Premise:This is a card game about beat Dealer's score while at the same time not
 User Story
 As a user I want to
 
-• Two players (one controlled by and the other one controlled by computer) one dealer (controlled by computer).
+• Two players (one controlled by the player and the other one is controlled by the computer) one dealer (controlled by the computer).
 
 • Be able to start the game by clicking start button.
 
