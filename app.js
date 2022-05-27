@@ -197,6 +197,7 @@ function handleHit() {
 function handleStand() {
   hit.disabled = true;
   currentPlayer = "Dealer";
+  dealerH2.innerText = `Score: ${dealerScore}`;
 
   checkStatus(dealerScore);
   setTimeout(() => {
