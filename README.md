@@ -1,10 +1,15 @@
 # Blackjack-Game
 
-Game Project: Blackjack
+**Game Project**
 
-Premise:This is a card game about beat Dealer's score while at the same time not Bust (over 21 points)
+Blackjack
 
-User Story
+**Premise**
+
+This is a card game about beat Dealer's score while at the same time not Bust (over 21 points)
+
+**User Story**
+
 As a user I want to
 
 • Two players (one controlled by the player and the other one is controlled by the computer) one dealer (controlled by the computer).
@@ -29,12 +34,13 @@ As a user I want to
 
 • Winner will have a winning message.
 
-Technologies Used
+**Technologies Used**
+
 • HTML
 • CSS
 • JavaScript (logic and DOM manipulation)
 
-what game will look like
+**what game will look like**
 
 • When you click start button everyone gets 2 cards, the it will be AI's turn, if AI has score less than 17, it will hit for more cards
 
