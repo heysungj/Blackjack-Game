@@ -147,7 +147,7 @@ function startGame() {
 
   // show scores
   playerH2.innerText = `Score: ${playerScore}`;
-  dealerH2.innerText = `Score: ${dealerScore}`;
+  dealerH2.innerText = `Score: ??`;
   // console.log(playerScore);
   checkStatus(playerScore);
   if (playerScore >= 21) {
