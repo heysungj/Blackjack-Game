@@ -36,6 +36,14 @@ Technologies Used
 
 what game will look like
 
+• When you click start button everyone gets 2 cards, the it will be AI's turn, if AI has score less than 17, it will hit for more cards
+
 ![alt text](https://github.com/heysungj/Blackjack-Game/blob/main/css/clickStart.jpeg)
+
+• Then it is player's turn, you can choose either Hit or Stand
+
 ![alt text](https://github.com/heysungj/Blackjack-Game/blob/main/css/clickHit.jpeg)
+
+•Then it will be Dealer's turn, when dealer hit 17 at the begging it must stand other wise dealer will choose hit to beat players
+
 ![alt text](https://github.com/heysungj/Blackjack-Game/blob/main/css/clickStand.jpeg)
