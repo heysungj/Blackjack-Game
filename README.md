@@ -34,7 +34,8 @@ Technologies Used
 • CSS
 • JavaScript (logic and DOM manipulation)
 
-Wireframes:
-![alt text](https://github.com/heysungj/Blackjack-Game/blob/main/css/instruction.jpeg)
-
 what game will look like
+
+![alt text](https://github.com/heysungj/Blackjack-Game/blob/main/css/clickStart.jpeg)
+![alt text](https://github.com/heysungj/Blackjack-Game/blob/main/css/clickHit.jpeg)
+![alt text](https://github.com/heysungj/Blackjack-Game/blob/main/css/clickStand.jpeg)
