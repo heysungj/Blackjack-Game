@@ -167,24 +167,6 @@ function scorePush(random, cardArr) {
     cardArr.push(random);
   }
 }
-// function dealerScorePush(random) {
-//   if (random === 1) {
-//     dealerCard.push(11);
-//   } else if (random > 10) {
-//     dealerCard.push(10);
-//   } else {
-//     dealerCard.push(random);
-//   }
-// }
-// function aiScorePush(random) {
-//   if (random === 1) {
-//     aiCard.push(11);
-//   } else if (random > 10) {
-//     aiCard.push(10);
-//   } else {
-//     aiCard.push(random);
-//   }
-// }
 
 // when click hit button , player will be assigned another card
 // check player's score
