@@ -70,8 +70,8 @@ function ai() {
   aiCardContainer.appendChild(aiCard2);
 
   // push score into ai score array
-  aiScorePush(random1);
-  aiScorePush(random2);
+  scorePush(random1, aiCard);
+  scorePush(random2, aiCard);
   [aiScore, countAce] = checkScore(aiCard);
 
   // show ai scores
@@ -85,7 +85,7 @@ function ai() {
       aiCardExtra.setAttribute("class", "show");
       aiCardExtra.alt = `${random}`;
       aiCardContainer.appendChild(aiCardExtra);
-      aiScorePush(random);
+      scorePush(random, aiCard);
       [aiScore, countAce] = checkScore(aiCard);
       aiH2.innerText = `Score: ${aiScore}`;
     }
@@ -120,8 +120,8 @@ function startGame() {
   playerCardContainer.appendChild(playerCard1);
   playerCardContainer.appendChild(playerCard2);
 
-  playerScorePush(random1);
-  playerScorePush(random2);
+  scorePush(random1, playerCard);
+  scorePush(random2, playerCard);
   // console.log(playerCard);
   // get dealer's first 2 cards and append them to dealerCard container
   // push score to dealerArr
@@ -136,8 +136,8 @@ function startGame() {
   dealerCard2.setAttribute("class", "show");
   dealerCardContainer.appendChild(dealerCard2);
   dealerCard2.alt = `${random4}`;
-  dealerScorePush(random3);
-  dealerScorePush(random4);
+  scorePush(random3, dealerCard);
+  scorePush(random4, dealerCard);
   console.log("dealer card is " + dealerCard);
   ai();
 
@@ -158,33 +158,33 @@ function startGame() {
 // game logic for cards from 2-10 it has its face value, for cards jack, queen, king they value 10
 // for card Ace it values 11 at begining
 // functions to push score into score arrays for player, AI and dealer
-function playerScorePush(random) {
+function scorePush(random, cardArr) {
   if (random === 1) {
-    playerCard.push(11);
+    cardArr.push(11);
   } else if (random > 10) {
-    playerCard.push(10);
+    cardArr.push(10);
   } else {
-    playerCard.push(random);
+    cardArr.push(random);
   }
 }
-function dealerScorePush(random) {
-  if (random === 1) {
-    dealerCard.push(11);
-  } else if (random > 10) {
-    dealerCard.push(10);
-  } else {
-    dealerCard.push(random);
-  }
-}
-function aiScorePush(random) {
-  if (random === 1) {
-    aiCard.push(11);
-  } else if (random > 10) {
-    aiCard.push(10);
-  } else {
-    aiCard.push(random);
-  }
-}
+// function dealerScorePush(random) {
+//   if (random === 1) {
+//     dealerCard.push(11);
+//   } else if (random > 10) {
+//     dealerCard.push(10);
+//   } else {
+//     dealerCard.push(random);
+//   }
+// }
+// function aiScorePush(random) {
+//   if (random === 1) {
+//     aiCard.push(11);
+//   } else if (random > 10) {
+//     aiCard.push(10);
+//   } else {
+//     aiCard.push(random);
+//   }
+// }
 
 // when click hit button , player will be assigned another card
 // check player's score
@@ -198,7 +198,7 @@ function handleHit() {
     playerCard3.alt = `${newCard}`;
     playerCardContainer.appendChild(playerCard3);
 
-    playerScorePush(newCard);
+    scorePush(newCard, playerCard);
     console.log("playercard is " + playerCard);
     [playerScore, countAce] = checkScore(playerCard);
     playerH2.innerText = `Score: ${playerScore}`;
@@ -225,7 +225,7 @@ function handleStand() {
       dealerCardExtra.setAttribute("class", "show");
       dealerCardExtra.alt = `${random}`;
       dealerCardContainer.appendChild(dealerCardExtra);
-      dealerScorePush(random);
+      scorePush(random, dealerCard);
       [dealerScore, countAce] = checkScore(dealerCard);
       dealerH2.innerText = `Score: ${dealerScore}`;
     }
